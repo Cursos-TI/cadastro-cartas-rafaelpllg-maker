@@ -10,15 +10,18 @@ int main() {
   char cod_estado1= 'a', cod_estado2= 'a';            //Variáveis com valores de "A" a "H" para os Estados
   char cod_carta1[4], cod_carta2[4];                  //Variáveis com valores de "01" a "04" para as cidades
   char nome_cidade1[50], nome_cidade2[50];            //Nome da cidade
-  int populacao1= 1, populacao2 = 1;                  //Variáveis com a população
-  int pts_turisticos1 = 1, pts_turisticos2 = 1;       //Variáveis com os pontos turísticos
-  float pib1 = 1.0, pib2 = 1.0;                       //Variáveis com o PIB
-  float area1 = 1.0, area2 = 1.0;                     //Variáveis com área
+  int populacao1= 0, populacao2 = 0;                  //Variáveis com a população
+  int pts_turisticos1 = 0, pts_turisticos2 = 0;       //Variáveis com os pontos turísticos
+  float pib1 = 0, pib2 = 0;                       //Variáveis com o PIB
+  float area1 = 0, area2 = 0;                     //Variáveis com área
+  float densidade_pop1 = 0, densidade_pop2 = 0;   //Variável calculada: populacao/area
+  float pib_capta1 = 0, pib_capta2 = 0;           //variável calculada: pib/populacao
+  float bilhao = 1000000000;                      //Transforma a notação do PIB de bilhões de reais para unidades de real (ex.: 600 bi para 600.000.000.000)
 
   // Área para entrada de dados
   //Cabeçalho do programa
   printf("===================================================\n");
-  printf("|          Bem-vindo ao Super Trunfo 0.1          |\n");
+  printf("|          Bem-vindo ao Super Trunfo 0.2          |\n");
   printf("===================================================\n\n");
     
   printf("Escolha duas cartas da sua mão e insira os valores\nde cada item conforme as instrucões a seguir:\n\n");
@@ -75,10 +78,24 @@ int main() {
   printf("  Imprimindo na tela os dados salvos das duas cartas\n");
   printf("======================================================\n\n");
 
+  //Processando os dados da Carta 1: cálculo do PIB per capta e da densidade populacional
+  densidade_pop1 = (float) populacao1 / area1;
+  pib_capta1  = (float) (pib1 * bilhao) / populacao1;
+
+  //Processando os dados da Carta 1: cálculo do PIB per capta e da densidade populacional
+  densidade_pop2 = (float) populacao2 / area2;
+  pib_capta2 = (float) (pib2 * bilhao) / populacao2;
+
   // Área para exibição dos dados da cidade
-  printf("Carta:1\nEstado: %c\nCódigo da carta: %s\nNome da cidade: %s\nPopulação: %d\nÁrea: %.2f km²\nPIB: %.2f bilhões de reais\nNúmero de pontos turísticos: %d", cod_estado1, cod_carta1, nome_cidade1, populacao1, area1, pib1, pts_turisticos1);
+  printf("Carta:1\nEstado: %c\nCódigo da carta: %s\nNome da cidade: %s\nPopulação: %d\nÁrea: %.2f km²\nPIB: %.2f bilhões de reais\nNúmero de pontos turísticos: %d\n", cod_estado1, cod_carta1, nome_cidade1, populacao1, area1, pib1, pts_turisticos1);
+  printf("Densidade Populacional: %.2f hab/km²\nPIB per Capta: %.2f reais", densidade_pop1, pib_capta1);
   printf("\n\n");
-  printf("Carta:2\nEstado: %c\nCódigo da carta: %s\nNome da cidade: %s\nPopulação: %d\nÁrea: %.2f km²\nPIB: %.2f bilhões de reais\nNúmero de pontos turísticos: %d", cod_estado2, cod_carta2, nome_cidade2, populacao2, area2, pib2, pts_turisticos2);
+  printf("Carta:2\nEstado: %c\nCódigo da carta: %s\nNome da cidade: %s\nPopulação: %d\nÁrea: %.2f km²\nPIB: %.2f bilhões de reais\nNúmero de pontos turísticos: %d\n", cod_estado2, cod_carta2, nome_cidade2, populacao2, area2, pib2, pts_turisticos2);
+  printf("Densidade Populacional: %.2f hab/km²\nPIB per Capta: %.2f reais", densidade_pop2, pib_capta2);
+  printf("\n\n");
+
+  printf("======================================================\n\n");
+  printf("======================================================\n\n");
 
 return 0;
 } 
